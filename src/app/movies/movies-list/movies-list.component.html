@@ -1,36 +1,33 @@
-@if(!movies){
-    <img src="loading.gif" width="60" height="60"/>
-  }
-  @else if (movies.length === 0) {
-    <div>
-      <p>There are not movies to show in this moment.</p>
-    </div>
-  }
-  @else {
-    <button (click)="addMovie()">Add Movie</button>
-    <div class="movies-container">
-      @for (movie of movies; track $index){
-        <div>
-          @if(movie.poster != null){
+
+<app-generic-listing [listing]="movies">
+    <ng-container listingContent>
+        <button (click)="addMovie()">Add Movie</button>
+        <div class="movies-container">
+            @for (movie of movies; track $index){
             <div>
-                <img [src]="movie.poster" width="180" height="260"/>
+                @if(movie.poster != null){
+                <div>
+                    <img [src]="movie.poster" width="180" height="260"/>
+                </div>
+                }
+                @else {
+                <div>
+                    <img src="defaultMovie.jpg" width="180" height="260"/>
+                </div>
+                }
+                
+                <div>
+                <p>Title: {{movie.title | uppercase}}</p>
+                <p>Ticket Value: {{movie.ticketValue | currency}}</p>
+                <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
+                </div>
+                <div>
+                <button (click)="removeMovie(movie)">Remove</button>
+                </div>
             </div>
-          }
-          @else {
-            <div>
-                <img src="defaultMovie.jpg" width="180" height="260"/>
-            </div>
-          }
-          
-          <div>
-            <p>Title: {{movie.title | uppercase}}</p>
-            <p>Ticket Value: {{movie.ticketValue | currency}}</p>
-            <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
-          </div>
-          <div>
-            <button (click)="removeMovie(movie)">Remove</button>
-          </div>
+            }
         </div>
-      }
-    </div>
-  }
+    </ng-container>
+</app-generic-listing>
+
+

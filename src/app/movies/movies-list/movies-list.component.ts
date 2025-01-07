@@ -1,9 +1,10 @@
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { GenericListingComponent } from "../../shared/components/generic-listing/generic-listing.component";
 
 @Component({
   selector: 'app-movies-list',
-  imports: [DatePipe, CurrencyPipe, UpperCasePipe],
+  imports: [DatePipe, CurrencyPipe, UpperCasePipe, GenericListingComponent],
   templateUrl: './movies-list.component.html',
   styleUrl: './movies-list.component.css'
 })

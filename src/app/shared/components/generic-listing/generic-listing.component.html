@@ -1,0 +1,19 @@
+@if(!listing){
+    <img src="loading.gif" width="60" height="60"/>
+  }
+  @else if (listing.length === 0) {
+    
+    <div #emptyListing>
+        <ng-content select="[emptyListing]"></ng-content>
+    </div>
+
+    @if(!emptyListing.innerHTML.trim()){
+        <div>
+            <p>There are not elements to show in this moment.</p>
+        </div>
+    }
+
+  }
+  @else {
+    <ng-content select="[listingContent]"></ng-content>
+  }
