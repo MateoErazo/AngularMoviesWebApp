@@ -20,6 +20,7 @@
                 }
                 
                 <div>
+                <app-rating [maximumRating]=6></app-rating>
                 <p>Title: {{movie.title | uppercase}}</p>
                 <p>Ticket Value: {{movie.ticketValue | currency}}</p>
                 <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
