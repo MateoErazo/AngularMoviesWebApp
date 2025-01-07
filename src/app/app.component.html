@@ -1,27 +1,8 @@
 <h1>Movie data</h1>
 <hr>
 
-@if(!movies){
-  <img src="loading.gif" width="60" height="60"/>
-}
-@else if (movies.length === 0) {
-  <div *ngIf="">
-    <p>There are not movies to show in this moment.</p>
-  </div>
-}
-@else {
-  @for (movie of movies; track $index){
-    <div class="movies-container">
-      <div style="display: flex; flex-direction: row; gap: 12px;">
-        <div>
-          <img [ngSrc]="movie.poster" [priority]="$index === 0" width="180" height="260"/>
-        </div>
-        <div>
-          <p>({{$index+1}}) Title: {{movie.title | uppercase}}</p>
-          <p>Ticket Value: {{movie.ticketValue | currency}}</p>
-          <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
-        </div>
-      </div>
-    </div>
-  }
-}
+<h2>In cinemas</h2>
+<app-movies-list></app-movies-list>
+
+<h2>Coming Soon</h2>
+<app-movies-list></app-movies-list>
