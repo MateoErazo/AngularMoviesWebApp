@@ -1,7 +1,10 @@
 
 <app-generic-listing [listing]="movies">
     <ng-container listingContent>
-        <button (click)="addMovie()">Add Movie</button>
+        <button mat-flat-button (click)="addMovie()">
+            <mat-icon>add</mat-icon>
+            Add Movie
+        </button>
         <div class="movies-container">
             @for (movie of movies; track $index){
             <div>
@@ -22,7 +25,10 @@
                 <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
                 </div>
                 <div>
-                <button (click)="removeMovie(movie)">Remove</button>
+                <button mat-flat-button (click)="removeMovie(movie)">
+                    <mat-icon>delete</mat-icon>
+                    Remove
+                </button>
                 </div>
             </div>
             }
