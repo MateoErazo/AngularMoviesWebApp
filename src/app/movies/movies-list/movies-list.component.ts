@@ -32,4 +32,8 @@ export class MoviesListComponent implements OnInit {
     this.movies.splice(index,1)
   }
 
+  ratingValueHandler = (ratingValue: number) => {
+    alert(`The selected rating is ${ratingValue}`)
+  }
+
 }
