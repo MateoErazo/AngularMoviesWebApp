@@ -1,36 +1,29 @@
 
 <app-generic-listing [listing]="movies">
     <ng-container listingContent>
-        <button mat-flat-button (click)="addMovie()">
-            <mat-icon>add</mat-icon>
-            Add Movie
-        </button>
         <div class="movies-container">
             @for (movie of movies; track $index){
-            <div>
-                @if(movie.poster != null){
+            <div class = "movie-container">
+                <a>
+                    @if(movie.poster != null){
+                        <div>
+                            <img [src]="movie.poster" width="180" height="260"/>
+                        </div>
+                    }
+                    @else {
+                        <div>
+                            <img src="defaultMovie.jpg" width="180" height="260"/>
+                        </div>
+                    }
+                </a>
+                <p>
+                    <a>{{movie.title}}</a>
+                </p>
                 <div>
-                    <img [src]="movie.poster" width="180" height="260"/>
+                    <a mat-flat-button>Edit</a>
+                    <button type="button" mat-flat-button color="warn">Delete</button>
                 </div>
-                }
-                @else {
-                <div>
-                    <img src="defaultMovie.jpg" width="180" height="260"/>
-                </div>
-                }
                 
-                <div>
-                <app-rating [maximumRating]=6 (ratingValue)="ratingValueHandler($event)"></app-rating>
-                <p>Title: {{movie.title | uppercase}}</p>
-                <p>Ticket Value: {{movie.ticketValue | currency}}</p>
-                <p>Release Date: {{movie.releaseDate | date:"dd-MMMM-yyyy"}}</p>
-                </div>
-                <div>
-                <button mat-flat-button (click)="removeMovie(movie)">
-                    <mat-icon>delete</mat-icon>
-                    Remove
-                </button>
-                </div>
             </div>
             }
         </div>
