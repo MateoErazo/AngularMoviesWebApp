@@ -1,1 +1,14 @@
-<button mat-flat-button (click)="saveChanges()">Save changes</button>
+<h2>Create Gender</h2>
+
+<form (submit)="saveChanges()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label style="color: white;">Name</mat-label>
+        <input matInput [formControl]="form.controls.name" style="color: white;"/>
+    </mat-form-field>
+
+    <div>
+        <button mat-flat-button (click)="saveChanges()">Save changes</button>
+        <a mat-stroked-button routerLink="/genders">Cancel</a>
+    </div>
+</form>
+
