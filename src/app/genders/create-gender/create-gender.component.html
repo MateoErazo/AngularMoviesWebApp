@@ -1,17 +1,4 @@
 <h2>Create Gender</h2>
 
-<form (submit)="saveChanges()" [formGroup]="form">
-    <mat-form-field appearance="outline">
-        <mat-label style="color: white;">Name</mat-label>
-        <input matInput [formControl]="form.controls.name" style="color: white;"/>
-        <mat-error>{{getErrorNameField()}}</mat-error>
-    </mat-form-field>
-
-    <div class="buttons-container">
-        <button mat-flat-button (click)="saveChanges()"
-        [disabled]="form.invalid"
-        >Save changes</button>
-        <a mat-stroked-button routerLink="/genders">Cancel</a>
-    </div>
-</form>
+<app-genders-form (formPosting)="saveChanges($event)"></app-genders-form>
 

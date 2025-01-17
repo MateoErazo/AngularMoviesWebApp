@@ -1,1 +1,3 @@
-<h2>The gender id to edit is {{id}}</h2>
+<h2>Gender Edit</h2>
+
+<app-genders-form [gender]="genderDummy" (formPosting)="saveChanges($event)"></app-genders-form>
