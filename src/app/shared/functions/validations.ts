@@ -22,3 +22,20 @@ export function firstCapitalLetter() : ValidatorFn {
     }
 
 }
+
+export function dateCannotBeInFuture(): ValidatorFn {
+    return (control: AbstractControl) : ValidationErrors | null => {
+        const userDate = new Date(control.value);
+        const todayDate = new Date();
+        
+        if(userDate > todayDate){
+            return {
+                futureDate:{
+                    message:'Date cannot be in future.'
+                }
+            }
+        }
+
+        return null;
+    }
+}

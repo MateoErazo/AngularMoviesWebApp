@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
 import { Router, RouterLink } from '@angular/router';
 import { ActorCreationDTO, ActorDTO} from '../actors';
 import moment from 'moment';
+import { dateCannotBeInFuture } from '../../shared/functions/validations';
 
 @Component({
   selector: 'app-actor-form',
@@ -31,7 +32,9 @@ export class ActorFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder)
   form = this.formBuilder.group({
     name : ['', {validators: [Validators.required]}],
-    birthDate : new FormControl<Date | null>(null)
+    birthDate : new FormControl<Date | null>(null, {
+      validators: [Validators.required, dateCannotBeInFuture()]
+    })
   })
 
   saveChanges(){
@@ -43,6 +46,30 @@ export class ActorFormComponent implements OnInit {
     actor.birthDate = moment(actor.birthDate).toDate()
     this.actorPosting.emit(actor)
     //this.router.navigate(['/actors'])
+  }
+
+  getErrorNameField(): string {
+    let name = this.form.controls.name
+
+    if(name.hasError('required')){
+      return 'The field name is required.'
+    }
+
+    return ''
+  }
+
+  getErrorBirthDateField (): string {
+    let birthDate = this.form.controls.birthDate
+
+    if(birthDate.hasError('required')){
+      return 'The field birthdate is required.'
+    }
+
+    if(birthDate.hasError('futureDate')){
+      return birthDate.getError('futureDate').message
+    }
+
+    return ''
   }
 
 }
