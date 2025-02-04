@@ -1,0 +1,14 @@
+button {
+    margin-right: 1%;
+}
+
+.buttons-container {
+    margin-top: 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin-top: 1rem;
+}
