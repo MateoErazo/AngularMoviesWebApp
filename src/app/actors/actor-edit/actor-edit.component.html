@@ -1,1 +1,2 @@
-<h2>The actor id to edit is {{id}}</h2>
+<h2>Actor Edit</h2>
+<app-actor-form (actorPosting)="saveChanges($event)" [model]="actor"></app-actor-form>
